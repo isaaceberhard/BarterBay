@@ -1,3 +1,5 @@
+package pack;
+
 public class UserProfile {
     private String userID;            // Unique identifier for the user
     private String profile;           // Profile information
