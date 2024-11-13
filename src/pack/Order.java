@@ -1,8 +1,4 @@
 package pack;
-<<<<<<< HEAD
-=======
-
->>>>>>> 6781776f10338dd4ec612dc3fc23483b4bc6775c
 public class Order {
     private String orderID;
     private User user;
