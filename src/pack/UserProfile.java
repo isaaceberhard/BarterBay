@@ -1,6 +1,7 @@
 package pack;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class UserProfile {
 	private String userID; // Unique identifier for the user
@@ -94,76 +95,89 @@ public class UserProfile {
 	}
 
 	public void showUserProfilePage() {
-		// Create JFrame for User Profile Page
-		JFrame frame = new JFrame("User Profile");
-		frame.setSize(600, 400);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    // Create JFrame for User Profile Page
+	    JFrame frame = new JFrame("User Profile");
+	    frame.setSize(600, 400);
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		// Create a panel and set its layout to BoxLayout for vertical alignment
-		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add padding
+	    // Create main panel with BorderLayout
+	    JPanel mainPanel = new JPanel(new BorderLayout());
+	    mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add padding
 
-		// Create components for "Change Username"
-		JLabel usernameLabel = new JLabel("Change Username:");
-		JTextField usernameField = new JTextField(20);
+	    // LEFT: Add an image
+	    JLabel imageLabel = new JLabel();
+	    ImageIcon userIcon = new ImageIcon(getClass().getResource("/pack/userProfileImage.png"));	    
+	    Image scaledImage = userIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH); // Resize image
+	    imageLabel.setIcon(new ImageIcon(scaledImage));
+	    mainPanel.add(imageLabel, BorderLayout.WEST);
 
-		// Create components for "Change Password"
-		JLabel passwordLabel = new JLabel("Change Password:");
-		JPasswordField passwordField = new JPasswordField(20);
+	    // CENTER: Create panel for input fields with BoxLayout
+	    JPanel formPanel = new JPanel();
+	    formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
 
-		// Create components for "Add Phone Number for MFA"
-		JLabel phoneLabel = new JLabel("Add Phone Number for MFA:");
-		JTextField phoneField = new JTextField(15);
+	    // Create components for "Change Username"
+	    JLabel usernameLabel = new JLabel("Change Username:");
+	    JTextField usernameField = new JTextField(20);
 
-		// Back button
-		JButton backButton = new JButton("Back to Main Menu");
+	    // Create components for "Change Password"
+	    JLabel passwordLabel = new JLabel("Change Password:");
+	    JPasswordField passwordField = new JPasswordField(20);
 
-		// Save changes button
-		JButton saveButton = new JButton("Save Changes");
+	    // Create components for "Add Phone Number for MFA"
+	    JLabel phoneLabel = new JLabel("Add Phone Number for MFA:");
+	    JTextField phoneField = new JTextField(15);
 
-		// Add components to the panel with spacing
-		panel.add(usernameLabel);
-		panel.add(usernameField);
-		panel.add(Box.createVerticalStrut(10)); // Add vertical spacing
+	    // Back button
+	    JButton backButton = new JButton("Back to Main Menu");
 
-		panel.add(passwordLabel);
-		panel.add(passwordField);
-		panel.add(Box.createVerticalStrut(10)); // Add vertical spacing
+	    // Save changes button
+	    JButton saveButton = new JButton("Save Changes");
 
-		panel.add(phoneLabel);
-		panel.add(phoneField);
-		panel.add(Box.createVerticalStrut(20)); // Add larger spacing
+	    // Add components to formPanel with spacing
+	    formPanel.add(usernameLabel);
+	    formPanel.add(usernameField);
+	    formPanel.add(Box.createVerticalStrut(10)); // Add vertical spacing
 
-		panel.add(saveButton);
-		panel.add(Box.createVerticalStrut(10)); // Add vertical spacing
-		panel.add(backButton);
+	    formPanel.add(passwordLabel);
+	    formPanel.add(passwordField);
+	    formPanel.add(Box.createVerticalStrut(10)); // Add vertical spacing
 
-		// Add panel to the frame
-		frame.add(panel);
+	    formPanel.add(phoneLabel);
+	    formPanel.add(phoneField);
+	    formPanel.add(Box.createVerticalStrut(20)); // Add larger spacing
 
-		// Set frame visibility
-		frame.setVisible(true);
+	    formPanel.add(saveButton);
+	    formPanel.add(Box.createVerticalStrut(10)); // Add vertical spacing
+	    formPanel.add(backButton);
 
-		// Add Action Listener for the Back button
-		backButton.addActionListener(e -> {
-			frame.dispose(); // Close User Profile Page
-			MainMenuGUI mainMenu = new MainMenuGUI(); // Open Main Menu
-			mainMenu.showMainMenu();
-		});
+	    // Add formPanel to mainPanel CENTER region
+	    mainPanel.add(formPanel, BorderLayout.CENTER);
 
-		// Add Action Listener for the Save button
-		saveButton.addActionListener(e -> {
-			String newUsername = usernameField.getText();
-			String newPassword = new String(passwordField.getPassword());
-			String phoneNumber = phoneField.getText();
+	    // Add main panel to the frame
+	    frame.add(mainPanel);
 
-			// Simulate saving the data (replace with actual logic as needed)
-			JOptionPane.showMessageDialog(frame,
-					"Changes Saved:\nUsername: " + newUsername + "\nPassword: "
-							+ (newPassword.isEmpty() ? "Not Changed" : "Changed") + "\nPhone: "
-							+ (phoneNumber.isEmpty() ? "Not Added" : phoneNumber));
-		});
+	    // Set frame visibility
+	    frame.setVisible(true);
+
+	    // Add Action Listener for the Back button
+	    backButton.addActionListener(e -> {
+	        frame.dispose(); // Close User Profile Page
+	        MainMenuGUI mainMenu = new MainMenuGUI(); // Open Main Menu
+	        mainMenu.showMainMenu();
+	    });
+
+	    // Add Action Listener for the Save button
+	    saveButton.addActionListener(e -> {
+	        String newUsername = usernameField.getText();
+	        String newPassword = new String(passwordField.getPassword());
+	        String phoneNumber = phoneField.getText();
+
+	        // Simulate saving the data (replace with actual logic as needed)
+	        JOptionPane.showMessageDialog(frame, 
+	            "Changes Saved:\nUsername: " + newUsername + 
+	            "\nPassword: " + (newPassword.isEmpty() ? "Not Changed" : "Changed") + 
+	            "\nPhone: " + (phoneNumber.isEmpty() ? "Not Added" : phoneNumber));
+	    });
 	}
 
 }
