@@ -39,5 +39,11 @@ public class MainMenuGUI {
             LoginGUI loginGUI = new LoginGUI();
             loginGUI.createAndShowGUI(); // Show login screen
         });
+        
+        productButton.addActionListener(e -> {
+            ProductGUI productGUI = new ProductGUI();
+            productGUI.showProductGUI();
+        });
+
     }
 }
