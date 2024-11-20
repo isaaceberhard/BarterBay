@@ -35,6 +35,12 @@ public class MainMenuGUI {
         // Set frame visibility
         frame.setVisible(true);
 
+        userProfileButton.addActionListener(e -> {
+            frame.dispose(); // Close Main Menu
+            UserProfile userProfilePage = new UserProfile(null, null, null, null, null, null); // Open User Profile Page
+            userProfilePage.showUserProfilePage();
+        });
+        
         // Add Action Listeners
         orderButton.addActionListener(e -> {
             // Dummy data for orders, replace with actual data
@@ -52,5 +58,11 @@ public class MainMenuGUI {
             LoginGUI loginGUI = new LoginGUI();
             loginGUI.createAndShowGUI(); // Show login screen
         });
+        
+        productButton.addActionListener(e -> {
+            ProductGUI productGUI = new ProductGUI();
+            productGUI.showProductGUI();
+        });
+
     }
 }
