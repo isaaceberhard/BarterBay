@@ -1,5 +1,7 @@
 package pack;
 
+import javax.swing.*;
+
 public class UserProfile {
     private String userID;            // Unique identifier for the user
     private String profile;           // Profile information
@@ -88,6 +90,34 @@ public class UserProfile {
         this.profile = newProfile;
         this.name = newName;
         this.shippingAddress = newShippingAddress;
+    }
+    public void showUserProfilePage() {
+        // Create JFrame for User Profile Page
+        JFrame frame = new JFrame("User Profile");
+        frame.setSize(600, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create a panel and add components
+        JPanel panel = new JPanel();
+        JLabel profileLabel = new JLabel("Welcome to your User Profile!");
+        JButton backButton = new JButton("Back to Main Menu");
+
+        // Add components to the panel
+        panel.add(profileLabel);
+        panel.add(backButton);
+
+        // Add panel to the frame
+        frame.add(panel);
+
+        // Set frame visibility
+        frame.setVisible(true);
+
+        // Add Action Listener for the Back button
+        backButton.addActionListener(e -> {
+            frame.dispose(); // Close User Profile Page
+            MainMenuGUI mainMenu = new MainMenuGUI(); // Open Main Menu
+            mainMenu.showMainMenu();
+        });
     }
 }
 
