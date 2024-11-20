@@ -2,6 +2,8 @@ package pack;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainMenuGUI {
     public void showMainMenu() {
@@ -24,7 +26,7 @@ public class MainMenuGUI {
         panel.add(userProfileButton);
         panel.add(productButton);
         panel.add(cartButton);
-        panel.add(orderButton);
+        panel.add(orderButton); // Add Orders button here
         panel.add(logoutButton);
 
         // Add panel to the frame
@@ -34,6 +36,17 @@ public class MainMenuGUI {
         frame.setVisible(true);
 
         // Add Action Listeners
+        orderButton.addActionListener(e -> {
+            // Dummy data for orders, replace with actual data
+            List<Order> orders = new ArrayList<>();
+            orders.add(new Order("O123", new User("U001", "John Doe", "john@example.com", "password"), new Cart("C001"), "Pending", 99.99f));
+            orders.add(new Order("O124", new User("U002", "Jane Doe", "jane@example.com", "password"), new Cart("C002"), "Shipped", 129.50f));
+            
+            // Open Orders Page with the order data
+            OrdersGUI ordersGUI = new OrdersGUI();
+            ordersGUI.showOrdersPage(orders);
+        });
+
         logoutButton.addActionListener(e -> {
             frame.dispose(); // Close main menu
             LoginGUI loginGUI = new LoginGUI();
