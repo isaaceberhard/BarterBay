@@ -33,6 +33,12 @@ public class MainMenuGUI {
         // Set frame visibility
         frame.setVisible(true);
 
+        userProfileButton.addActionListener(e -> {
+            frame.dispose(); // Close Main Menu
+            UserProfile userProfilePage = new UserProfile(null, null, null, null, null, null); // Open User Profile Page
+            userProfilePage.showUserProfilePage();
+        });
+        
         // Add Action Listeners
         logoutButton.addActionListener(e -> {
             frame.dispose(); // Close main menu
