@@ -61,11 +61,15 @@ public class LoginGUI {
 	                // Simulate login logic
 	                if (username.equals("admin") && password.equals("password")) {
 	                    JOptionPane.showMessageDialog(frame, "Login Successful!");
+	                    frame.dispose(); // Close the login window
+	                    MainMenuGUI mainMenuGUI = new MainMenuGUI();
+	                    mainMenuGUI.showMainMenu(); // Show the main menu
 	                } else {
 	                    JOptionPane.showMessageDialog(frame, "Invalid Username or Password.");
 	                }
 	            }
 	        });
+
 
 	        registerButton.addActionListener(new ActionListener() {
 	            @Override
