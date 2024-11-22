@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainMenuGUI {
+	
     public void showMainMenu() {
         // Create JFrame for Main Menu
         JFrame frame = new JFrame("Main Menu");
@@ -45,13 +46,13 @@ public class MainMenuGUI {
         // Add Action Listeners
         orderButton.addActionListener(e -> {
             // Dummy data for orders, replace with actual data
-            List<Order> orders = new ArrayList<>();
-            orders.add(new Order("O123", new User("U001", "John Doe", "john@example.com", "password"), new Cart("C001"), "Pending", 99.99f));
-            orders.add(new Order("O124", new User("U002", "Jane Doe", "jane@example.com", "password"), new Cart("C002"), "Shipped", 129.50f));
-            
+//            List<Order> orders = new ArrayList<>();
+//            orders.add(new Order("O123", new User("U001", "John Doe", "john@example.com", "password"), new Cart("C001"), "Pending", 99.99f));
+//            orders.add(new Order("O124", new User("U002", "Jane Doe", "jane@example.com", "password"), new Cart("C002"), "Shipped", 129.50f));
+//            
             // Open Orders Page with the order data
             OrdersGUI ordersGUI = new OrdersGUI();
-            ordersGUI.showOrdersPage(orders);
+            ordersGUI.showOrdersPage();
         });
 
         logoutButton.addActionListener(e -> {
