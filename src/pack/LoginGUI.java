@@ -35,6 +35,7 @@ public class LoginGUI {
         JTextField userText = new JTextField(20);
         userText.setBounds(150, 50, 165, 25);
         panel.add(userText);
+        userText.setText("admin");
 
         JLabel passwordLabel = new JLabel("Password:");
         passwordLabel.setBounds(50, 90, 80, 25);
@@ -43,6 +44,7 @@ public class LoginGUI {
         JPasswordField passwordText = new JPasswordField(20);
         passwordText.setBounds(150, 90, 165, 25);
         panel.add(passwordText);
+        passwordText.setText("password");
 
         // Create login button
         JButton loginButton = new JButton("Login");
