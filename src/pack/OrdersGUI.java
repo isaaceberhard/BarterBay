@@ -9,11 +9,8 @@ import java.util.List;
 public class OrdersGUI {
 
 	public void showOrdersPage() {
-		List<Order> orders = new ArrayList<>();
-		orders.add(new Order("O123", new User("U001", "John Doe", "john@example.com", "password"), new Cart("C001"),
-				"Pending", 99.99f));
-		orders.add(new Order("O124", new User("U002", "Jane Doe", "jane@example.com", "password"), new Cart("C002"),
-				"Shipped", 129.50f));
+		
+		List<Order> orders = createOrderList();
 
 		// Create JFrame for Orders page
 		JFrame frame = new JFrame("Orders");
@@ -31,7 +28,6 @@ public class OrdersGUI {
 		buttonPanel.add(buyButton);
 		buttonPanel.add(sellButton);
 		buttonPanel.add(profileButton);
-		
 		
 		setButtonStyle(sellButton, buyButton, profileButton);
 
@@ -108,6 +104,15 @@ public class OrdersGUI {
 		// Add the panel to the frame
 		frame.add(new JScrollPane(panel));
 		frame.setVisible(true);
+	}
+
+	private List<Order> createOrderList() {
+		List<Order> orders = new ArrayList<>();
+		orders.add(new Order("O123", new User("U001", "John Doe", "john@example.com", "password"), new Cart("C001"),
+				"Pending", 99.99f));
+		orders.add(new Order("O124", new User("U002", "Jane Doe", "jane@example.com", "password"), new Cart("C002"),
+				"Shipped", 129.50f));
+		return orders;
 	}
 
 	private void setButtonStyle(JButton sellButton, JButton buyButton, JButton profileButton) {
