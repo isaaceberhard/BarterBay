@@ -99,11 +99,11 @@ public class UserProfile {
 
 	public void showUserProfilePage() {
 
-		//		try {
-		//		    UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
-		//		 } catch (Exception e) {
-		//		            e.printStackTrace();
-		//		 }
+				try {
+				    UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
+				 } catch (Exception e) {
+				            e.printStackTrace();
+				 }
 
 		// Create JFrame for User Profile Page
 		JFrame frame = new JFrame("User Profile");

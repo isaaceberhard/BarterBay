@@ -65,6 +65,9 @@ public class OrdersGUI {
 			JLabel orderLabel = new JLabel("Order ID: " + order.getOrderID() + " | Status: " + order.getStatus()
 			+ " | Total: $" + order.getTotalAmount());
 			JButton viewButton = new JButton("View Order");
+			
+		
+			
 			viewButton.addActionListener(e -> {
 				// Logic to show order details (you can create a method for detailed view)
 				JOptionPane.showMessageDialog(frame, "Viewing order: " + order.getOrderID());
@@ -74,9 +77,20 @@ public class OrdersGUI {
 			orderPanel.add(viewButton);
 			panel.add(orderPanel);
 		}
+		
+		profileButton.addActionListener(e -> {
+			
+			frame.dispose();
+			UserProfile userProfile = new UserProfile(null, null, null, null, null, null);
+			userProfile.showUserProfilePage();
+			
+			
+			
+			
+		});
 
 		// Add the panel to the frame
-		frame.add(new JScrollPane(panel)); // Scrollable panel
+		frame.add(new JScrollPane(panel));
 		frame.setVisible(true);
 	}
 }
