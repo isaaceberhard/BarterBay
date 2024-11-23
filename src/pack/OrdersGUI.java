@@ -42,6 +42,8 @@ public class OrdersGUI {
 		
 		panel.add(buttonPanel, BorderLayout.EAST);
 
+		String[] options = {"Track Order", "Cancel"};
+		
 		// Loop through the orders list and add them to the panel
 		for (Order order : orders) {
 			JPanel orderPanel = new JPanel();
@@ -50,13 +52,42 @@ public class OrdersGUI {
 			JLabel orderLabel = new JLabel("Order ID: " + order.getOrderID() + " | Status: " + order.getStatus()
 			+ " | Total: $" + order.getTotalAmount());
 			JButton viewButton = new JButton("View Order");
+			JButton trackButton = new JButton("Track Order");
+			
+			
+			trackButton.addActionListener(e -> {
+				
+				
+				
+				
+			});
 			
 		
 			
 			viewButton.addActionListener(e -> {
 				// Logic to show order details (you can create a method for detailed view)
 				JOptionPane.showMessageDialog(frame, "Viewing order: " + order.getOrderID());
+				int choice = JOptionPane.showOptionDialog(
+						frame, 
+						order.getOrderID(), 
+						"Viewing order: ", 
+						0, 
+						0, 
+						null, 
+						options, 
+						options[0]
+						);
+				
+				
+				// Respond to the choice
+		        if (choice >= 0) {
+		            System.out.println("You selected: " + options[choice]);
+		        } else {
+		            System.out.println("No option selected");
+		        }
 			});
+			
+			
 
 			orderPanel.add(orderLabel);
 			orderPanel.add(viewButton);
