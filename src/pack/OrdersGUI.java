@@ -19,6 +19,7 @@ public class OrdersGUI {
 		JFrame frame = new JFrame("Orders");
 		frame.setSize(600, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
 		
 		JButton sellButton = new JButton("Sell");
 		JButton buyButton = new JButton("Buy");
@@ -32,23 +33,7 @@ public class OrdersGUI {
 		buttonPanel.add(profileButton);
 		
 		
-		buyButton.setBackground(Color.BLACK);
-		buyButton.setOpaque(true);
-		buyButton.setBorderPainted(false);
-		buyButton.setForeground(Color.WHITE);
-		buyButton.setFocusable(false);
-
-		sellButton.setBackground(Color.BLACK);
-		sellButton.setOpaque(true);
-		sellButton.setBorderPainted(false);
-		sellButton.setForeground(Color.WHITE);
-		sellButton.setFocusable(false);
-
-		profileButton.setBackground(Color.BLACK);
-		profileButton.setOpaque(true);
-		profileButton.setBorderPainted(false);
-		profileButton.setForeground(Color.WHITE);
-		profileButton.setFocusable(false);
+		setButtonStyle(sellButton, buyButton, profileButton);
 
 
 		// Create a JPanel for displaying orders
@@ -92,5 +77,25 @@ public class OrdersGUI {
 		// Add the panel to the frame
 		frame.add(new JScrollPane(panel));
 		frame.setVisible(true);
+	}
+
+	private void setButtonStyle(JButton sellButton, JButton buyButton, JButton profileButton) {
+		buyButton.setBackground(Color.BLACK);
+		buyButton.setOpaque(true);
+		buyButton.setBorderPainted(false);
+		buyButton.setForeground(Color.WHITE);
+		buyButton.setFocusable(false);
+
+		sellButton.setBackground(Color.BLACK);
+		sellButton.setOpaque(true);
+		sellButton.setBorderPainted(false);
+		sellButton.setForeground(Color.WHITE);
+		sellButton.setFocusable(false);
+
+		profileButton.setBackground(Color.BLACK);
+		profileButton.setOpaque(true);
+		profileButton.setBorderPainted(false);
+		profileButton.setForeground(Color.WHITE);
+		profileButton.setFocusable(false);
 	}
 }

@@ -13,6 +13,7 @@ public class LoginGUI {
         JFrame frame = new JFrame("Login");
         frame.setSize(400, 250);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
 
         // Create and add components
         JPanel panel = createLoginPanel(frame);

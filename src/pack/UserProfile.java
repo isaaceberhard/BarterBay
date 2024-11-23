@@ -109,6 +109,7 @@ public class UserProfile {
 		JFrame frame = new JFrame("User Profile");
 		frame.setSize(1280, 720);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
 
 		// Create main panel with BorderLayout
 		JPanel mainPanel = new JPanel(new BorderLayout());
