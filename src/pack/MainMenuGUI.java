@@ -11,7 +11,7 @@ public class MainMenuGUI {
     public void showMainMenu() {
         // Create JFrame for Main Menu
         JFrame frame = new JFrame("Main Menu");
-        frame.setSize(600, 400);
+        frame.setSize(600, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Main Menu Panel
@@ -24,12 +24,17 @@ public class MainMenuGUI {
         JButton cartButton = new JButton("Cart");
         JButton orderButton = new JButton("Orders");
         JButton logoutButton = new JButton("Logout");
+        
+        JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 10)); // Align buttons to the right with spacing
 
-        panel.add(userProfileButton);
-        panel.add(productButton);
-        panel.add(cartButton);
-        panel.add(orderButton); // Add Orders button here
-        panel.add(logoutButton);
+		buttonPanel.add(userProfileButton);
+		buttonPanel.add(productButton);
+		buttonPanel.add(cartButton);
+		buttonPanel.add(orderButton);
+		buttonPanel.add(logoutButton);
+
+		panel.add(buttonPanel, BorderLayout.EAST);
 
         // Add panel to the frame
         frame.add(panel);
@@ -51,6 +56,7 @@ public class MainMenuGUI {
 //            orders.add(new Order("O124", new User("U002", "Jane Doe", "jane@example.com", "password"), new Cart("C002"), "Shipped", 129.50f));
 //            
             // Open Orders Page with the order data
+        	frame.dispose();
             OrdersGUI ordersGUI = new OrdersGUI();
             ordersGUI.showOrdersPage();
         });
