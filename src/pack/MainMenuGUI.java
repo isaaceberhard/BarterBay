@@ -2,6 +2,8 @@
 package pack;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,23 +11,21 @@ import java.util.List;
 public class MainMenuGUI {
 
 	public void showMainMenu() {
-		// Create JFrame for Main Menu
+
 		JFrame frame = new JFrame("Main Menu");
-		frame.setSize(600, 800);
+		frame.setSize(700, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 
-		// Main Menu Panel
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		
-		// "Barter Bay" Text Label
-        JLabel titleLabel = new JLabel("Barter Bay");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        titleLabel.setForeground(Color.BLACK);
-        titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        titleLabel.setVerticalAlignment(SwingConstants.TOP);
 
+		// "Barter Bay" Text Label
+		JLabel titleLabel = new JLabel("Barter Bay");
+		titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+		titleLabel.setForeground(Color.BLACK);
+		titleLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		titleLabel.setVerticalAlignment(SwingConstants.TOP);
 
 		// Add buttons to the panel
 		JButton userProfileButton = new JButton("User Profile");
@@ -40,17 +40,32 @@ public class MainMenuGUI {
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 10)); // Align buttons to the right with spacing
 
 		buttonPanel.add(userProfileButton);
+//		buttonPanel.add(Box.createVerticalStrut(10));
 		buttonPanel.add(productButton);
+//		buttonPanel.add(Box.createVerticalStrut(10));
 		buttonPanel.add(cartButton);
+//		buttonPanel.add(Box.createVerticalStrut(10));
 		buttonPanel.add(orderButton);
+//		buttonPanel.add(Box.createVerticalStrut(10));
 		buttonPanel.add(logoutButton);
 
-		panel.add(buttonPanel, BorderLayout.EAST);
+		// Combine "Barter Bay" and buttons into a single horizontal panel
+		JPanel leftAndCenterPanel = new JPanel(new BorderLayout());
+		leftAndCenterPanel.add(titleLabel, BorderLayout.WEST);
+		leftAndCenterPanel.add(buttonPanel, BorderLayout.EAST);
 
-		// Add panel to the frame
+		// "Shop Smarter" Text Label
+		JLabel footerLabel = new JLabel("Shop Smarter");
+		footerLabel.setFont(new Font("Arial", Font.BOLD, 16));
+		footerLabel.setForeground(Color.BLACK);
+		footerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		footerLabel.setVerticalAlignment(SwingConstants.CENTER);
+//		footerLabel.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+		panel.add(leftAndCenterPanel, BorderLayout.NORTH);
+		panel.add(footerLabel, BorderLayout.CENTER);
+
 		frame.add(panel);
-
-		// Set frame visibility
 		frame.setVisible(true);
 
 		userProfileButton.addActionListener(e -> {
@@ -59,7 +74,6 @@ public class MainMenuGUI {
 			userProfilePage.showUserProfilePage();
 		});
 
-		// Add Action Listeners
 		orderButton.addActionListener(e -> {
 			// Dummy data for orders, replace with actual data
 			// List<Order> orders = new ArrayList<>();
