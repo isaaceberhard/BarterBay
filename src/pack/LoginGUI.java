@@ -25,37 +25,45 @@ public class LoginGUI {
 
     private JPanel createLoginPanel(JFrame frame) {
         // Create JPanel
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5); // Add spacing between components
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        
 
         // Create labels and text fields
         JLabel userLabel = new JLabel("Username:");
-        userLabel.setBounds(50, 50, 80, 25);
-        panel.add(userLabel);
+        gbc.gridx = 0; // Column 0
+        gbc.gridy = 0; // Row 0
+        gbc.gridwidth = 2; // Span across 2 columns
+        panel.add(userLabel, gbc);
 
         JTextField userText = new JTextField(20);
-        userText.setBounds(150, 50, 165, 25);
-        panel.add(userText);
+        gbc.gridy = 1; // Row 1 (below the label)
+        panel.add(userText, gbc);
         userText.setText("admin");
 
         JLabel passwordLabel = new JLabel("Password:");
-        passwordLabel.setBounds(50, 90, 80, 25);
-        panel.add(passwordLabel);
+        gbc.gridy = 2; // Row 2
+        panel.add(passwordLabel, gbc);
 
         JPasswordField passwordText = new JPasswordField(20);
-        passwordText.setBounds(150, 90, 165, 25);
-        panel.add(passwordText);
+        gbc.gridy = 3; // Row 3
+        panel.add(passwordText, gbc);
         passwordText.setText("password");
+
 
         // Create login button
         JButton loginButton = new JButton("Login");
-        loginButton.setBounds(50, 140, 120, 25);
-        panel.add(loginButton);
+        gbc.gridy = 4; // Row 4
+        gbc.gridx = 0; // First column
+        gbc.gridwidth = 1; // Span 1 column
+        panel.add(loginButton, gbc);
 
         // Create register button
         JButton registerButton = new JButton("Register");
-        registerButton.setBounds(200, 140, 120, 25);
-        panel.add(registerButton);
+        gbc.gridx = 1; // Second column
+        panel.add(registerButton, gbc);
 
         // Action listener for login
         loginButton.addActionListener(new ActionListener() {
