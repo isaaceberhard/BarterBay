@@ -64,6 +64,16 @@ public class LoginGUI {
         JButton registerButton = new JButton("Register");
         gbc.gridx = 1; // Second column
         panel.add(registerButton, gbc);
+        
+     // Create "Forgot Password?" label
+        JLabel forgotPasswordLabel = new JLabel("<html><u>Forgot Password?</u></html>");
+        forgotPasswordLabel.setForeground(Color.BLUE); // Make it look like a link
+        forgotPasswordLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Change cursor on hover
+
+        gbc.gridy = 5; // Row 5 (below the buttons)
+        gbc.gridx = 0;
+        gbc.gridwidth = 2; // Center across both columns
+        panel.add(forgotPasswordLabel, gbc);
 
         // Action listener for login
         loginButton.addActionListener(new ActionListener() {
